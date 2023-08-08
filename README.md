@@ -1,3 +1,3 @@
 # NN-CAR
 
-Link : https://mohitsingh-19.github.io/NN-CAR/
+Link : https://moh1tsingh.github.io/NN-CAR/
