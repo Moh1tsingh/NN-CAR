@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 const road=new Road(canvas.width/2,canvas.width*0.9);
 const car = new Car(road.getLaneCenter(1),100,30,50,"AI");
 
-const N=500;
+const N=1000;
 const cars = generateCars(N); 
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -20,31 +20,27 @@ if(localStorage.getItem("bestBrain")){
     
 }
 
-const traffic=[
-    new Car(road.getLaneCenter(1),-100,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(0),-300,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-300,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(1),-550,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(0),-800,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-620,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-450,30,50,"DUMMY",2),
+const traffic=[];
 
-    new Car(road.getLaneCenter(1),-1000,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(0),-1200,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-1200,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(1),-1450,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(0),-1700,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-1520,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-1350,30,50,"DUMMY",2),
+for(let i=100;i<1000;i+=100){
+    let a,b,c
+    a = Math.floor(Math.random() * 3);
+    b = Math.floor(Math.random() * 3);
+    c = Math.floor(Math.random() * 2);
+    if(a!=b){
+        if(c==0){
+            traffic.push(new Car(road.getLaneCenter(a),-i,30,50,"DUMMY",2));
+        }
+        else{
+            traffic.push(
+                new Car(road.getLaneCenter(a),-i,30,50,"DUMMY",2),
+                new Car(road.getLaneCenter(b),-i,30,50,"DUMMY",2)
+                );
+        }
+    }
+    
 
-    new Car(road.getLaneCenter(0),-1800,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(1),-1880,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-2440,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(0),-2220,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(2),-1735,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(0),-1920,30,50,"DUMMY",2),
-    new Car(road.getLaneCenter(1),-2100,30,50,"DUMMY",2),
-];
+}
 
 
 animate();
