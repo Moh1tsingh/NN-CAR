@@ -22,7 +22,7 @@ if(localStorage.getItem("bestBrain")){
 
 const traffic=[];
 
-for(let i=100;i<1000;i+=100){
+for(let i=100;i<2100;i+=100){
     let a,b,c
     a = Math.floor(Math.random() * 3);
     b = Math.floor(Math.random() * 3);
